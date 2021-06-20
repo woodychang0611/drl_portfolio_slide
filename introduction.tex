@@ -1,0 +1,104 @@
+\section{Introduction}
+\begin{frame}
+\frametitle{Portfolio Management System}
+\begin{columns}
+\begin{column}{0.55\textwidth}
+\begin{block}{Portfolio}
+Collection of financial investments
+\end{block}
+\begin{block}{Portfolio Management System}
+A system produces portfolios based on investments, the market, and Investor preference
+\end{block}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{center}
+\includegraphics[width=4.8cm]{images/portfolio_management_system.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Modern Portfolio Theory (MPT)}
+\begin{columns}
+\begin{column}{0.55\textwidth}
+Produce a portfolio from the prediction of future performance with maximum expected return from given risk or minimum risk from given expected return
+\begin{center}
+\includegraphics[width=5cm]{images/efficient_frontier.png}
+\end{center}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{center}
+\includegraphics[width=4.8cm]{images/mpt.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Supervised Learning Forecast System}
+\begin{columns}
+\begin{column}{0.55\textwidth}
+\begin{itemize}
+\item
+Model trained with labeled data. 
+The effects of transaction costs and tax are not considered.
+\item
+The Trading System in the next stage usually does not use inputs to the Forecast System, resulting in loss of information.
+\end{itemize}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{center}
+\includegraphics[width=4.8cm]{images/supervised_learning.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Reinforcement Learning (RL) based System}
+\begin{columns}
+\begin{column}{0.55\textwidth}
+\begin{itemize}
+\item
+Optimize objective function directly without performance forecast.
+\item
+The effects of transaction costs and tax are considered.
+\item
+\alert
+{To our knowledge, few RL-based Portfolio Management Systems incorporate with investor preference.}
+\end{itemize}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{center}
+\includegraphics[width=4.8cm]{images/rl.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Objective}
+\begin{columns}
+\begin{column}{0.55\textwidth}
+Our goal is to incorporate RL-based System with investor preference, \alert{investors' risk tolerance} in this case.
+
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{center}
+\includegraphics[width=4.8cm]{images/rl2.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
