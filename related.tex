@@ -19,16 +19,25 @@ Produce a portfolio from the prediction of future performance with maximum expec
 
 
 \begin{frame}{Reinforcement Learning with Sharpe Ratio}
-Sharpe Ratio ratio is defined as 
+John Moody's trading system used reinforcement learning to construct the optimal portfolio and used Sharpe Ratio as objective function.
+
+\begin{block}{Sharpe Ratio}
 \[ SR = \frac{E(R_a - R_b)}{\sigma_a},
 \sigma_a = \sqrt{VAR(R_a-R_b)}\]
-where \(R_a\) is the return of the assert, 
-\(R_b\) is the risk-free return,
-\(E(R_a - R_b)\) is the expected excess return of the assert,
-and \(\sigma_a\) is standard deviation of the excess return.
+\(R_a\): the return of the assert
+\\
+\(R_b\): the risk-free return
+\\
+\(E(R_a - R_b)\): the expected excess return of the assert
+\\
+\(\sigma_a\): standard deviation of the excess return.
+\end{block}
+
 \end{frame}
 \begin{frame}{The differential Sharpe ratio}
-The differential Sharpe ratio \(D\) is defined in the form:
+Online learning systems required influence on Sharpe ratio, an incremental Sharpe ratio, or differential Sharpe ratio \(D_t\).
+\begin{block}{Differential Sharpe Ratio}
+
 \[
 \cfrac{d D_t}{d R_t} = 
 \cfrac{B_{t-1}-A_{t-1} R_t}{(B_{t-1}-A_{t-1}^2)^\frac{3}{2}}
@@ -38,6 +47,7 @@ A and B is the first and second moments of the returns' distributions
 \[ A_n = \cfrac{1}{n}\sum_{i=1}^nR_i\quad
 B_n = \cfrac{1}{n}\sum_{i=1}^nR_i^2
 \]
+\end{block}
 \end{frame}
 \begin{frame}{Reinforcement Learning with Sterling Ratio}
 \[
@@ -58,6 +68,9 @@ DDR_T = \frac{Average(R_T)}{DD_T}
 
 \begin{frame}{Differential form}
 The reward function will use the differential form of the utility function \(D_t\).
+
+\begin{block}{Differential Form}
+
 \[
 D_t = 
 \begin{cases}
@@ -65,5 +78,7 @@ D_t =
     \cfrac{DD_{t-1}^2 (R_{t-1}-\frac{1}{2}A_{t-1})  -\frac{1}{2}A_{t-1} R_t^2}{DD_{t-1}^3},&\text{if  }R_t \leq 0
 \end{cases}
 \]
+\end{block}
 Unlike utility functions that use variance as the risk-adjusted factor, this formula indicates no penalty for large positive returns. 
+
 \end{frame}
