@@ -31,22 +31,26 @@ The model contain two main parts
 \end{frame}
 
 \begin{frame}{Market Features}
-\begin{tabular}{|| c| c||}
+\footnotesize
+\begin{tabular}{|| c| c | c||}
 \hline
-Description & Categories \\ \hline \hline
-5-Year Treasury Constant Maturity Rate & Interest Rates\\ \hline
-10-Year Treasury Constant Maturity Rate & Interest Rates\\ \hline
-30-Year Treasury Constant Maturity Rate & Interest Rates\\ \hline
-5-Year Breakeven Inflation Rate & Interest Rates\\ \hline
-10-Year Breakeven Inflation Rate & Interest Rates\\ \hline
-Crude Oil Prices: Brent - Europe &  Commodities\\ \hline
-Gold Prices &  Commodities\\ \hline
-CBOE Volatility Index (VIX) &  Indexes\\ \hline
-US Dollar Index (USDX) &  Currencies\\ \hline
+Description & Categories & Stationary \\ \hline \hline
+5-Year Treasury Constant Maturity Rate & Interest Rates  & Yes \\ \hline
+10-Year Treasury Constant Maturity Rate & Interest Rates & Yes \\ \hline
+30-Year Treasury Constant Maturity Rate & Interest Rates & Yes \\ \hline
+5-Year Breakeven Inflation Rate & Interest Rates & Yes \\ \hline
+10-Year Breakeven Inflation Rate & Interest Rates & Yes \\ \hline
+Crude Oil Prices: Brent - Europe &  Commodities & No \\ \hline
+Gold Prices &  Commodities & No \\ \hline
+CBOE Volatility Index (VIX) &  Indexes & No \\ \hline
+US Dollar Index (USDX) &  Currencies & No \\ \hline
 \end{tabular}
 \end{frame}
 
 
+
+\newcommand\mynum[1]{{\renewcommand{\insertenumlabel}{#1}%
+      \usebeamertemplate{enumerate item}}}
 
 \begin{frame}{Investment Universe}
 \begin{block}{Goal}
@@ -57,7 +61,7 @@ Choose 10 investments with low covariances between each other; hence their combi
     \item Starts from the top 100 ETFs by Asset Under Management (AUM)
     \item Remove ones with trading records of less than 14 years.
     \item \label{itm:remove_items} Obtain the top two most correlated ETFs and remove the one with lower AUM
-    \item Repeat Step\ref{itm:remove_items} iteratively until 10 ETFs are left
+    \item Repeat \mynum{\ref{itm:remove_items}} iteratively until 10 ETFs are left
     \end{enumerate}
 \end{block}
 \end{frame}
@@ -82,13 +86,14 @@ Choose 10 investments with low covariances between each other; hence their combi
 
 
 \begin{frame}{Investor Preference}
+For investor preference, we focus on risk.
 \begin{block}{Acquire risk aversion}
-Professional personnel or organization will acquire risk aversion from investors by survey or other techniques and interprets the inputs into comparable indicators between investors.
+Professional personnel or organization will acquire risk aversion from investors by survey or other techniques and interprets the inputs into comparable indicators, e.g., MDD, between investors.
 \\
 \alert{This part is not in the scope of our thesis}
 \end{block}
-\begin{block}{Maximum Drawdown (MDD)}
-MDD is one of the indicators to evaluate our system. However, optimizing any ratio using MDD directly has many challenges. Some researches indicate MDDs are outliers or imply optimizing MDD is troublesome. 
+\begin{block}{Risk Indicator}
+We use MDD as the risk indicator to evaluate our system. However, optimizing any ratio using MDD directly has many challenges. Some researches indicate MDDs are outliers or imply optimizing MDD is troublesome. 
 \\
 \alert{We will not limit ourselves to use MDD while optimizing the model and consider other alternatives.}
 \end{block}
@@ -116,7 +121,12 @@ SAC is highly sensitive to the scaling of the reward.
 
 
 \begin{frame}{Trading Environment}
-A trading environment \alert{compatible with Open AI Gym}
+Trading Environment serves two primary goals.
+\\
+\begin{itemize}
+    \item Translate domain-specific inputs into state/reward as inputs
+    \item Build the portfolio from the action of the RL model
+\end{itemize}
 \begin{center}
   \includegraphics[width=10cm]{images/trading_environment.png}
 \end{center}
@@ -147,16 +157,16 @@ The feature extractor extracts states from the features.
 The portfolio builder builds the portfolio from the investible universe and the action from the RL model.
 \\
 \begin{block}{Portfolio}
-The portfolio F is an m dimension vector space of weights w.
+The portfolio F is an m dimension vector space of weights f.
 \[
-    F = \{ {w \in \mathbb{R} } \} ^m,
-    \sum_{i=1}^m {w_i} =1
+    F = \{ {f \in \mathbb{R} } \} ^m,
+    \sum_{i=1}^m {f_i} =1
 \]
 \end{block}
 \begin{block}{Weight}
 Weight is a real number between 0 and 1. \alert{(No short position)}
 \[
-    w \in \mathbb{R} | 0 \leq w \leq 1 
+    f \in \mathbb{R} | 0 \leq f \leq 1 
 \]
 \end{block}
 \end{frame}
@@ -190,6 +200,14 @@ R_t =
 \end{cases}
 \]
 \end{block}
+\alert{
+The result shows unstable improvement in MDD. We observed that the optimization goes too well during training and generates a tiny amount of negative profits; therefore, these negative profits have minimal penalty effect on the model parameters.
+}
+
+\end{frame}
+
+\begin{frame}{Reward Provider}
+We then apply the penalty upon both positive and negative profits. 
 \begin{block}{Option 2: Penalty upon both positive and negative profits}
 \[
 R_t = 
@@ -199,22 +217,18 @@ R_t =
 \end{cases}
 \]
 \end{block}
-\alert{
-The result shows unstable improvement in MDD. We observed that the optimization goes too well during training and generates a tiny amount of negative profits; therefore, these negative profits have minimal penalty effect on the model parameters.
-}
-
+\alert{This increases the stability significantly.}
 \end{frame}
 
-\begin{frame}{Reward Provider}
-We then apply the penalty upon both positive and negative profits. This increases the stability significantly.
 
-The threshold \(\theta\) will be the main adjustable parameter of our system. Adjusting it will enable the system to produce portfolios to meet different investors' risk tolerance.
-\end{frame}
+
 \begin{frame}{Reward Provider}
 \begin{columns}
-\begin{column}{0.25\textwidth}
+\begin{column}{0.35\textwidth}
+The results show penalty upon all profits exceed threshold has much better stability in terms of MDD during validation period. 
+
 \end{column}
-\begin{column}{0.75\textwidth}
+\begin{column}{0.65\textwidth}
 \begin{center}
       \includegraphics[height=7cm]{images/penalty_negtive_profits_compare.png}
 \end{center}
@@ -222,16 +236,32 @@ The threshold \(\theta\) will be the main adjustable parameter of our system. Ad
 \end{columns}
 \end{frame}
 
-\begin{frame}{Result}
-\begin{columns}
-\begin{column}{0.25\textwidth}
-TEST
+
+\begin{frame}{Validation Result}
+
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\begin{block}{Validation Period}
+Period 1 (2017-03~2019-02) 
+\\
+Period 2 (2019/03~2021/02)
+\end{block}
+\begin{block}{Comparison}
+Compare CAGR and MDD of the portfolio from our system with result of Constant Rebalanced Portfolio (CRP)
+\end{block}
 \end{column}
-\begin{column}{0.75\textwidth}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{Result}
+Our system successfully build portfolios with different MDD upon the same validation period using various thresholds and outperformed CRP Portfolios in most cases.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Validation Result}
 \begin{center}
 \includegraphics[height= 7.5cm]{images/crp_compare.png}
 \end{center}
-\end{column}
-\end{columns}
 
 \end{frame}
