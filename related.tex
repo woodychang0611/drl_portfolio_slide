@@ -3,7 +3,7 @@
 \frametitle{Modern Portfolio Theory (MPT)}
 \begin{columns}
 \begin{column}{0.55\textwidth}
-Produce a portfolio from the prediction of future performance with maximum expected return from given risk or minimum risk from given expected return
+MPT produces portfolios with maximum expected return from given risk (variance) or vice versa base on the forecasts of future performance (expected return and variance)
 \begin{center}
 \includegraphics[width=5cm]{images/efficient_frontier.png}
 \end{center}
@@ -22,8 +22,7 @@ Produce a portfolio from the prediction of future performance with maximum expec
 John Moody's trading system used reinforcement learning to construct the optimal portfolio and used Sharpe Ratio as objective function.
 
 \begin{block}{Sharpe Ratio}
-\[ SR = \frac{E(R_a - R_b)}{\sigma_a},
-\sigma_a = \sqrt{VAR(R_a-R_b)}\]
+\[ SR = \frac{E(R_a - R_b)}{\sigma_a}\]
 \(R_a\): the return of the assert
 \\
 \(R_b\): the risk-free return
@@ -50,20 +49,67 @@ B_n = \cfrac{1}{n}\sum_{i=1}^nR_i^2
 \end{block}
 \end{frame}
 \begin{frame}{Reinforcement Learning with Sterling Ratio}
+\begin{block}{Problem}
+Sharpe ratio is criticized for adjustment done based on variance rather than downside risk, penalty upon large positive returns.
+\end{block}
+\begin{block}{Solution}
+Use Sterling Ratio as objective function.
 \[
 Sterling Ratio=\frac{Annualized Average Return}{Maximum Drawdown}
 \]
-Maximum Drawdown is cumbersome to minimize, used DD instead, the square root of the average of the
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Challenge with Maximum Drawdown}
+Maximum Drawdown is cumbersome to minimize.
+\setbeamerfont{block body}{size=\scriptsize}
+\begin{block}{Maximum Drawdown when market follows Brownian motion}
+
+\[E(MDD)=
+\begin{cases}
+    \cfrac{\tau^2}{\mu}Q_p(\cfrac{\mu^2T}{\tau^2}),&\text{if  }\mu > 0\\
+    1.2552 \tau \sqrt{T},& \text{if  }\mu=0 \\
+    \cfrac{\tau^2}{\mu}Q_n(\cfrac{\mu^2T}{\tau^2}),&\text{if  }\mu <0
+\end{cases}
+\]
+where
+\[
+\begin{aligned}
+Q_p(x) = &2\int_0^\infty\Biggl[
+    e^{-u}\sum_{n=1}^{\infty}
+    \cfrac{\sin^3(\theta_n)}{\theta_n-\cos(\theta_n)\sin(\theta_n)}
+    (1-e^{-\frac{x}{2cos^2(\theta_n)}})\\
+    &+e^{-\frac{u}{\tanh(u)}}\sinh(u)
+    (1-e^{-\frac{x}{2\cosh^2(\theta_n)}})
+    \Biggr]\,du
+\end{aligned}
+\]
+\[
+Q_n(x)-2\int_0^\infty e^u \sum_{n=1}^{\infty}
+\cfrac{\sin^3(\theta_n)}{\theta_n-\cos(\theta_n)\sin(\theta_n)}
+(1-e^{-\frac{x}{2cos^2(\theta_n)}})
+\,du
+\]
+\[
+\theta_n \text{ is the solution of }
+ \tanh(\theta_n) =\cfrac{\theta_n}{u},
+ \theta_n \in \bigl( (n-\cfrac{\pi}{2}),(n+\cfrac{\pi}{2})\bigr)
+\]
+\end{block}
+    
+\end{frame}
+\begin{frame}{Alternatives to Maximum Drawdown and  Sterling Ratio}
+Moody used DD to replace , the square root of the average of the
 square of the negative returns, defined as
 \[
 DD_T = \sqrt{\cfrac{1}{T}\sum_{t=0}^{T}{min\{R_T,0\}^2}}
 \]
-Sterling Ratio than can be replaced by downside deviation ratio (DDR)
+And replace Sterling Ratio with downside deviation ratio (DDR)
 \[
 DDR_T = \frac{Average(R_T)}{DD_T}
 \]
 \end{frame}
-
 
 
 \begin{frame}{Differential form}
