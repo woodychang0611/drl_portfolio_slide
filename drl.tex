@@ -1,33 +1,60 @@
-\section{DRL}
+\section{DRL}   
+
+
 \begin{frame}{Deep Reinforcement Learning (DRL) Model}
+    \tableofcontents[sectionstyle=show/hide, hideothersubsections]
     \centering
     \includegraphics[width=10cm]{images/drl_model.png}
 \end{frame}
 
+\subsection{Reinforcement Learning}
 \begin{frame}{Reinforcement Learning}
-    \centering
-    \includegraphics[width=8cm]{images/rl_overview.png}
+\begin{columns}
+    \begin{column}{0.45\textwidth}
+    \begin{enumerate}
+        \item Observes the states from the environment.
+        \item Performs the action on the environment.
+        \item Adjust its parameters based on the reward.
+    \end{enumerate}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \centering
+    \includegraphics[width=5cm]{images/rl_overview.png} \end{column}
+\end{columns}
 \end{frame}
 
 
-
+\subsection{Value Optimization vs Policy Optimization}
 \begin{frame}{Value Optimization vs Policy Optimization}
 \end{frame}
 
+\subsection{On-Policy vs Off-Policy}
 \begin{frame}{On-Policy vs Off-Policy}
 \end{frame}
 
 \begin{frame}{Comparison}
 \end{frame}
 
-
+\subsection{Determinisitc Policy vs Stochastic Policy}
 \begin{frame}{Determinisitc Policy vs Stochastic Policy}
 \end{frame}
 
 \subsection{Soft Actor-Critic}
 \begin{frame}{Actor-Critic}
+ \begin{columns}
+    \begin{column}{0.45\textwidth}
+    \begin{enumerate}
+        \item Observes the states from the environment.
+        \item Performs the action on the environment.
+        \item Calculate TD error based on the reward.
+        \item Adjust the parameters of Value function and the policy with the TD error.
+    \end{enumerate}
+    \end{column}
+    \begin{column}{0.45\textwidth}
     \centering
-    \includegraphics[width=8cm]{images/actor_critic.png}
+    \includegraphics[width=5cm]{images/actor_critic.png}
+ \end{column}
+ \end{columns}
 \end{frame}
 
 \begin{frame}{Soft Actor-Critic}
