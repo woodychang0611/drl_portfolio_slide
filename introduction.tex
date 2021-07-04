@@ -1,17 +1,11 @@
-\section{Introduction}
+ \section{Introduction}
 
 
 \begin{frame}{Introduction}
-    \begin{columns}
-    \begin{column}{0.55\textwidth}
-     \tableofcontents[currentsection]
-     \end{column}
-    \begin{column}{0.55\textwidth}
-        \begin{center}
-        \includegraphics[width=4.8cm]{images/mpt.png}
-        \end{center}
-     \end{column}     
-     \end{columns}
+       \tableofcontents[sectionstyle=show/hide, hideothersubsections]
+    \begin{center}
+    \includegraphics[width=10cm]{images/portfolio_introduction.png}
+    \end{center}
 \end{frame}
 
 
@@ -20,17 +14,15 @@
 \frametitle{Objective}
 \begin{columns}
 \begin{column}{0.55\textwidth}
-Incorporate DRL-based System with investor preference, \alert{investors' risk tolerance} in this case.
+Incorporate DRL-based System with investor preference(\alert{risk preference}).
 
 
 \begin{block}{Objective}
 \begin{enumerate}
-    \item XXXX
-    \item OOOO
+    \item Produce portfolios with different risks by adjusting parameters..
+    \item Outperform constant rebalanced portfolio (CRP)
 \end{enumerate}
 \end{block}
-
-
 \end{column}
 \begin{column}{0.45\textwidth}
 \begin{center}
@@ -39,8 +31,6 @@ Incorporate DRL-based System with investor preference, \alert{investors' risk to
 \end{column}
 \end{columns}
 \end{frame}
-
-
 
 
 \begin{frame}
@@ -53,7 +43,12 @@ Collection of financial investments
 \begin{block}{Portfolio Management System}
 A system produces portfolios based on investment universe, the market, and investor preference
 \end{block}
+\begin{block}{Terms}
+    Wealth: Total value of the portfolio
+    Profit: Wealth gain between each trade
+\end{block}
 \end{column}
+
 \begin{column}{0.45\textwidth}
 \begin{center}
 \includegraphics[width=4.8cm]{images/portfolio_management_system.png}
@@ -63,21 +58,36 @@ A system produces portfolios based on investment universe, the market, and inves
 \end{frame}
 
 
+\subsection{Modern Portfolio Theory}
+\begin{frame}
+\frametitle{Modern Portfolio Theory (MPT)}
+\begin{columns}
+\begin{column}{0.55\textwidth}
+MPT produces portfolios with maximum expected return from given risk (variance) or vice versa base on the forecasts of future performance (expected return and variance)
+\begin{center}
+\includegraphics[width=5cm]{images/efficient_frontier.png}
+\end{center}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{center}
+\includegraphics[width=4.8cm]{images/mpt.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
 
 
-
-
-
+\subsection{Supervised Learning Forecast System}
 \begin{frame}
 \frametitle{Supervised Learning Forecast System}
 \begin{columns}
 \begin{column}{0.55\textwidth}
 \begin{itemize}
 \item
-Model trained with labeled data. 
-The effects of transaction costs and tax are not considered.
+Trained with labeled data.
+\item The effects of transaction costs not considered.
 \item
-The Trading System in the next stage usually does not use inputs to the Forecast System, resulting in loss of information.
+Inputs not passed to next stage, resulting in loss of information.
 \end{itemize}
 \end{column}
 \begin{column}{0.45\textwidth}
@@ -89,7 +99,7 @@ The Trading System in the next stage usually does not use inputs to the Forecast
 \end{frame}
 
 
-
+\subsection{Reinforcement Learning based System}
 \begin{frame}
 \frametitle{Reinforcement Learning (RL) based System}
 \begin{columns}
