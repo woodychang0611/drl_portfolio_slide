@@ -1,0 +1,19 @@
+\section{Deep Reinforcement Learning}
+
+
+\begin{frame}{Reinforcement Learning (RL) Model}
+We Use Soft Actor-Critic (SAC), as the RL model.
+\begin{block}{SAC Overview}
+\begin{itemize}
+    \item Optimizes a stochastic policy in an off-policy way
+    \item Optimizes the policy with \alert{entropy regularization} and takes entropy, measuring randomness in the policy, into account.
+\end{itemize}
+\end{block}
+\begin{alertblock}{Reward Scale}
+SAC is highly sensitive to the scaling of the reward. 
+\begin{itemize}
+    \item If reward scale is too small, the reward will fail to affect the model, and the policy will become nearly uniform.
+    \item If reward scale is too large, the model will learn quickly and become deterministic, leaving no room for exploration.
+\end{itemize}
+\end{alertblock}
+\end{frame}
