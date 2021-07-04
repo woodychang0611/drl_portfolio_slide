@@ -1,40 +1,56 @@
 \section{Trading Environment}
 
 \begin{frame}{Trading Environment}
-Trading Environment serves two primary goals.
-\\
-\begin{itemize}
-    \item Translate domain-specific inputs into state/reward as inputs
-    \item Build the portfolio from the action of the RL model
-\end{itemize}
+   \tableofcontents[sectionstyle=show/hide, hideothersubsections]
 \begin{center}
   \includegraphics[width=10cm]{images/trading_environment.png}
 \end{center}
 \end{frame}
-
+\subsection{Feature Extractor}
 \begin{frame}{Feature Extractor}
-The feature extractor extracts states from the features.
+\begin{block}{Objective}
+Extract states from the features.
+\end{block}
+Process
 \begin{enumerate}
     \item {
-    Normalize the input features to mean 0 and standard division \(\sigma_{state}\),
-        \[
-            f^{'}_{i,t} = \frac{\sigma_{state} \times   (f_{i,t} -  \overline{f_i})}{\sigma_{f_i}}
-        \]
-    }
-    \item{To avoid over-fitting, we add Gaussian distribution noise to the feature
-            \[
-            s_{i,t} = f^{'}_{i,t} + \mathcal{N}(0,\sigma_{noise}^2)
-        \]
-    }
+    Normalize the input features}
+    \item{Add Gaussian distribution noise to avoid over-fitting}
 \end{enumerate}
 \alert{Validation results improved significantly after adding noise.}
 \begin{center}
   \includegraphics[width=10cm]{images/compare_noise.png}
 \end{center}
 \end{frame}
+\subsection{Portfolio Builder}
 
+\begin{frame}{Portfolio Builder}
+\begin{block}{Objective}
+Produce the portfoio from action.
+\end{block}
+\begin{block}{Action}
+The action A is a vector space real number between -1 and 1.
+\[
+    A = \{ {a \in \mathbb{R} } \} ^m,
+    a \in \mathbb{R} | -1 \leq a \leq 1 
+\]
+\end{block}
+\begin{block}{Portfolio}
+The portfolio F is a vector space of weights f\\
+In proportion of normalized action.
+\[
+    F = \{ {f \in \mathbb{R} } \} ^m,
+    {f_i} = \cfrac {a_i+1}{\sum\limits_{i=1}^m {(a_i+1)}}
+\]
+\end{block}
+
+\end{frame}
+
+\subsection{Reward Provider}
 \begin{frame}{Reward Provider}
-The Reward Provider provides the reward to the RL model based on the performance of the portfolio.
+\begin{block}{Objective}
+Provides the reward to the RL model based on the performance of the portfolio and investors preference.
+\end{block}
 \begin{block}{Option 1: Penalty upon negative profits}
 Penalty \(p_t-\theta\), upon negative profits exceeding the threshold \(\theta\). 
 \[
@@ -48,13 +64,15 @@ R_t =
 \]
 \end{block}
 \alert{
-The result shows unstable improvement in MDD. We observed that the optimization goes too well during training and generates a tiny amount of negative profits; therefore, these negative profits have minimal penalty effect on the model parameters.
+\begin{itemize}
+    \item Unstable improvement in MDD
+    \item Assumption: Optimization goes too well during training and generates a tiny amount of negative profit
+\end{itemize}
 }
 
 \end{frame}
 
 \begin{frame}{Reward Provider}
-We then apply the penalty upon both positive and negative profits. 
 \begin{block}{Option 2: Penalty upon both positive and negative profits}
 \[
 R_t = 
@@ -67,17 +85,11 @@ R_t =
 \alert{This increases the stability significantly.}
 \end{frame}
 
-\begin{frame}{Reward Provider}
-\begin{columns}
-\begin{column}{0.35\textwidth}
-The results show penalty upon all profits exceed threshold has much better stability in terms of MDD during validation period. 
 
-\end{column}
-\begin{column}{0.65\textwidth}
+
+\begin{frame}{Reward Provider}
 \begin{center}
       \includegraphics[height=7cm]{images/penalty_negtive_profits_compare.png}
 \end{center}
-\end{column}
-\end{columns}
 \end{frame}
 
