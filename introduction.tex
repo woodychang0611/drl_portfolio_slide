@@ -14,13 +14,13 @@
 \frametitle{Objective}
 \begin{columns}
 \begin{column}{0.55\textwidth}
-Incorporate DRL-based System with investor preference, \alert{investors' risk tolerance} in this case.
+Incorporate DRL-based System with investor preference(\alert{risk preference}).
 
 
 \begin{block}{Objective}
 \begin{enumerate}
-    \item XXXX
-    \item OOOO
+    \item Produce portfolios with different risks by adjusting parameters..
+    \item Outperform constant rebalanced portfolio (CRP)
 \end{enumerate}
 \end{block}
 \end{column}
@@ -43,7 +43,12 @@ Collection of financial investments
 \begin{block}{Portfolio Management System}
 A system produces portfolios based on investment universe, the market, and investor preference
 \end{block}
+\begin{block}{Terms}
+    Wealth: Total value of the portfolio
+    Profit: Wealth gain between each trade
+\end{block}
 \end{column}
+
 \begin{column}{0.45\textwidth}
 \begin{center}
 \includegraphics[width=4.8cm]{images/portfolio_management_system.png}
@@ -79,10 +84,10 @@ MPT produces portfolios with maximum expected return from given risk (variance) 
 \begin{column}{0.55\textwidth}
 \begin{itemize}
 \item
-Model trained with labeled data. 
-The effects of transaction costs and tax are not considered.
+Trained with labeled data.
+\item The effects of transaction costs not considered.
 \item
-The Trading System in the next stage usually does not use inputs to the Forecast System, resulting in loss of information.
+Inputs not passed to next stage, resulting in loss of information.
 \end{itemize}
 \end{column}
 \begin{column}{0.45\textwidth}

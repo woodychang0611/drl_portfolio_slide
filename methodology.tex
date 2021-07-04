@@ -30,7 +30,7 @@
     \end{tabular}
 \end{frame}
 
-\section{Validation Period}
+\subsection{Validation Period}
 \centering
 \begin{frame}{Validation Period}
 \begin{tabular}{||c|c|c|c|c||}
@@ -38,7 +38,7 @@
     \multirow{2}{*}{Period} &
     \multirow{2}{*}{Start} &
     \multirow{2}{*}{End} &
-    \multicolumn{2}{c|}{S\&P 500} \\ 
+    \multicolumn{2}{c||}{S\&P 500} \\ 
     \cline{4-5} &{} &{} & CAGR & MDD \\ \hline \hline
     Period 1 & 2017/3/1 & 2019/2/28 & 7.81\% & 19.78\% \\ \hline
     Period 2 & 2019/3/1 & 2021/3/15 & 18.56\% & 33.9\% \\    
@@ -55,13 +55,17 @@ s
 
 \begin{columns}[t]
 \begin{column}{0.5\textwidth}
-\begin{block}{Validation Period}
-Period 1 (2017-03~2019-02) 
-\\
-Period 2 (2019/03~2021/02)
+
+\begin{block}{Baseline}
+Constant Rebalanced Portfolio (CRP)
 \end{block}
+
+
 \begin{block}{Comparison}
-Compare CAGR and MDD of the portfolio from our system with result of Constant Rebalanced Portfolio (CRP)
+    \begin{itemize}
+        \item CAGR
+        \item MDD
+    \end{itemize}
 \end{block}
 \end{column}
 
@@ -73,7 +77,7 @@ Our system successfully build portfolios with different MDD upon the same valida
 \end{columns}
 \end{frame}
 
-\begin{frame}{Validation Result}
+\begin{frame}{Result}
 \begin{center}
 \includegraphics[height= 7.5cm]{images/crp_compare.png}
 \end{center}

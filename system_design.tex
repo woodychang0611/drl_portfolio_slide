@@ -2,15 +2,19 @@
 \begin{frame}{Overview}
    \tableofcontents[sectionstyle=show/hide, hideothersubsections]
 \begin{center}
-  \includegraphics[width=10cm]{images/context_diagram.png}  
+  \includegraphics[width=10cm]{images/context_diagram.png} 
 \end{center}
 \end{frame}
 
 
 \subsection{Market Features}
 \begin{frame}{Market Features}
+    \begin{block}{Objective}
+        Select features to represent the status of the market.
+    \end{block}
 \centering
 \includegraphics[width=10cm]{images/market.png}
+
 \end{frame}
 
 \begin{frame}{Market Features}
@@ -56,13 +60,21 @@ US Dollar Index (USDX) &  Currencies & No \\ \hline
 
 \subsection{Investment Universe}
 \begin{frame}{Investment Universe}
+    \begin{block}{Objective}
+        Pick available investments for the portfolio.
+    \end{block}
+
+
 \centering
 \includegraphics[width=10cm]{images/investment_universe.png}
 \end{frame}
 
 \begin{frame}{Investment Universe}
 \begin{block}{Goal}
-Choose 10 investments with low covariances between each other; hence their combinations can yield better profits from the same risk level
+\begin{itemize}
+    \item Choose 10 investments
+    \item Low covariances between each other
+\end{itemize}
 \end{block}
 \begin{block}{Selection Process}
     \begin{enumerate}
@@ -98,27 +110,52 @@ Choose 10 investments with low covariances between each other; hence their combi
 
 \subsection{Investor Preference}
 \begin{frame}{Investor Preference}
+    \begin{block}{Objective}
+        Define indicator to represent investor preference.
+    \end{block}
 \centering
 \includegraphics[width=10cm]{images/investor_preference.png}
 \end{frame}
 
 \begin{frame}{Investor Preference}
-For investor preference, we focus on risk.
-\begin{block}{Acquire risk aversion}
-Professional personnel or organization will acquire risk aversion from investors by survey or other techniques and interprets the inputs into comparable indicators, e.g., MDD, between investors.
-\\
-\alert{This part is not in the scope of our thesis}
+\begin{block}{Risk Preference Acquisition}
+\begin{itemize}
+    \item Acquire risk preference from investors by survey or other techniques and interprets into indicators.
+    \item \alert{This part is not in the scope of our thesis}
+\end{itemize}
+
 \end{block}
-\begin{block}{Risk Indicator}
-We use MDD as the risk indicator to evaluate our system. However, optimizing any ratio using MDD directly has many challenges. Some researches indicate MDDs are outliers or imply optimizing MDD is troublesome. 
-\\
-\alert{We will not limit ourselves to use MDD while optimizing the model and consider other alternatives.}
+\begin{block}{Standard Deviation}
+\begin{itemize}
+    \item Sharpe Ratio uses the standard deviation to represent a risk
+    \item \alert{Blooming return also yield a high standard deviation}
+\end{itemize}
+\end{block}
+\begin{block}{Maximum Drawdown (MDD)}
+\begin{itemize}
+    \item The decline from the highest peak.
+    \item \alert{Challenge to optimize}
+    \item Used for performance evaluation not for optimizing
+\end{itemize}
 \end{block}
 \end{frame}
 
 
 
 \subsection{Portfolio}
+
+
+\begin{frame}{Portfolio}
+    \begin{block}{Objective}
+        Define a data structure to represent portfolio.
+    \end{block}
+\centering
+\includegraphics[width=10cm]{images/portfolio.png}
+
+\end{frame}
+
+
+
 \begin{frame}{Portfolio}
 \begin{block}{Portfolio}
 The portfolio F is an m dimension vector space of weights f.
