@@ -12,12 +12,11 @@
 \end{itemize}
 \end{block}
 \begin{block}{Training and Validation}
-    \begin{tabular}{||c|c|c|c||}
-        \hline \hline
-        Data Type & Start Time & End Time & Period (Year) \\ \hline \hline
-        Training Data  &  2007/4/20 & 2017/2/28 & 9.87\\ \hline
+    \centering
+    \begin{tabular}{c | c| c | c}
+        Data Type & Start Time & End Time & Period (Year) \\ \hline 
+        Training Data  &  2007/4/20 & 2017/2/28 & 9.87\\ 
         Validation Data & 2017/3/1 & 2021/3/15 & 4.04 \\ 
-        \hline \hline
         \end{tabular}
 \end{block}
 \begin{block}{Data Processing}
@@ -36,30 +35,30 @@
     \item Keep default value for the rest
 \end{itemize}
 \centering
- \begin{tabular}{| c|c | }
-   \hline \hline
-   Parameter & Value \\ \hline \hline
-   Optimizer & Adam \\ \hline
-   Learning rate & \(3 10^{-4}\) \\ \hline
-   Replay size & \(10^6\) \\ \hline
-   Hidden layer&   256X256  \\ \hline
-   Discount & 0.99 \\ \hline
-   Target smoothing coefficient & 0.005 \\ \hline
-   Target update interval & 1 \\ \hline
-   Gradient steps & 1 \\ \hline
-   Reward scale & \color{blue}{1000} \\ \hline \hline
+ \begin{tabular}{ c|c  }
+
+   Parameter & Value \\ \hline 
+   Optimizer & Adam \\
+   Learning rate & \(3 10^{-4}\) \\ 
+   Replay size & \(10^6\) \\ 
+   Hidden layer&   256X256  \\
+   Discount & 0.99 \\ 
+   Target smoothing coefficient & 0.005 \\ 
+   Target update interval & 1 \\ 
+   Gradient steps & 1 \\
+   Reward scale & \color{blue}{1000} \\
     \end{tabular}
 \end{frame}
 \subsection{Experiment}
 \begin{frame}{Experiment}
 \begin{block}{System Parameter}
     \centering
-    \begin{tabular}{||c|c||}
-    \hline \hline
+    \begin{tabular}{|c|c|}
+        \hline
     Threshold $\theta$ & Risk Preference \\ \hline
-    No plenty ($\infty$) & High \\ \hline
-    0.006 & Medium      \\ \hline
-    0.002 & Low      \\ \hline \hline
+    No plenty ($\infty$) & High \\ 
+    0.006 & Medium      \\ 
+    0.002 & Low      \\ \hline
     \end{tabular}
 \end{block}
 \begin{columns}[t]
