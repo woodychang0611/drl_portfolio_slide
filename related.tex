@@ -1,11 +1,20 @@
 \section{Related Work}
+
+\begin{frame}{Related Work}
+       \tableofcontents[sectionstyle=show/hide, hideothersubsections]
+    \begin{center}
+    \includegraphics[width=10cm]{images/related.png}
+    \end{center}
+\end{frame}
+
+\subsection{Modern Portfolio Theory}
 \begin{frame}
 \frametitle{Modern Portfolio Theory (MPT)}
 \begin{columns}
 \begin{column}{0.55\textwidth}
 MPT produces portfolios with maximum expected return from given risk (variance) or vice versa base on the forecasts of future performance (expected return and variance)
 \begin{center}
-\includegraphics[width=5cm]{images/efficient_frontier.png}
+\includegraphics[width=5cm]{images/mpt.png}
 \end{center}
 \end{column}
 \begin{column}{0.45\textwidth}
@@ -17,7 +26,7 @@ MPT produces portfolios with maximum expected return from given risk (variance) 
 \end{frame}
 
 
-
+\subsection{Reinforcement Learning with Sharpe Ratio}
 \begin{frame}{Reinforcement Learning with Sharpe Ratio}
 John Moody's trading system used reinforcement learning to construct the optimal portfolio and used Sharpe Ratio as objective function.
 
@@ -31,8 +40,10 @@ John Moody's trading system used reinforcement learning to construct the optimal
 \\
 \(\sigma_a\): standard deviation of the excess return.
 \end{block}
-
 \end{frame}
+
+
+
 \begin{frame}{The differential Sharpe ratio}
 Online learning systems required influence on Sharpe ratio, an incremental Sharpe ratio, or differential Sharpe ratio \(D_t\).
 \begin{block}{Differential Sharpe Ratio}
@@ -48,6 +59,10 @@ B_n = \cfrac{1}{n}\sum_{i=1}^nR_i^2
 \]
 \end{block}
 \end{frame}
+
+
+
+\subsection{Reinforcement Learning with Sterling Ratio}
 \begin{frame}{Reinforcement Learning with Sterling Ratio}
 \begin{block}{Problem}
 Sharpe ratio is criticized for adjustment done based on variance rather than downside risk, penalty upon large positive returns.
@@ -127,4 +142,10 @@ D_t =
 \end{block}
 Unlike utility functions that use variance as the risk-adjusted factor, this formula indicates no penalty for large positive returns. 
 
+\end{frame}
+
+
+\subsection{Comparison}
+\begin{frame}{Comparison}
+    
 \end{frame}
