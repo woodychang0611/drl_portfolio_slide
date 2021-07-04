@@ -1,0 +1,33 @@
+\begin{frame}{Portfolio Builder}
+The portfolio builder builds the portfolio from the investible universe and the action from the RL model.
+\\
+\begin{block}{Portfolio}
+The portfolio F is an m dimension vector space of weights f.
+\[
+    F = \{ {f \in \mathbb{R} } \} ^m,
+    \sum_{i=1}^m {f_i} =1
+\]
+\end{block}
+\begin{block}{Weight}
+Weight is a real number between 0 and 1. \alert{(No short position)}
+\[
+    f \in \mathbb{R} | 0 \leq f \leq 1 
+\]
+\end{block}
+\end{frame}
+
+
+
+
+\begin{frame}{Trading System}
+The Trading System measures performances of the given portfolios
+\begin{block}{Performances}
+\begin{itemize}
+    \item MDD
+    \item CAGR
+    \item Profit
+    \item Wealth
+\end{itemize}
+\end{block}
+These performances will be the input to calculate the reward or evaluate the performance of the system. 
+\end{frame}

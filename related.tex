@@ -13,13 +13,10 @@
 \begin{columns}
 \begin{column}{0.55\textwidth}
 MPT produces portfolios with maximum expected return from given risk (variance) or vice versa base on the forecasts of future performance (expected return and variance)
-\begin{center}
-\includegraphics[width=5cm]{images/mpt.png}
-\end{center}
 \end{column}
 \begin{column}{0.45\textwidth}
 \begin{center}
-\includegraphics[width=4.8cm]{images/mpt.png}
+\includegraphics[width=4.8cm]{images/mpt_risk.png}
 \end{center}
 \end{column}
 \end{columns}
@@ -76,45 +73,8 @@ Sterling Ratio=\frac{Annualized Average Return}{Maximum Drawdown}
 
 \end{frame}
 
-\begin{frame}{Challenge with Maximum Drawdown}
-Maximum Drawdown is cumbersome to minimize.
-\setbeamerfont{block body}{size=\scriptsize}
-\begin{block}{Maximum Drawdown when market follows Brownian motion}
-
-\[E(MDD)=
-\begin{cases}
-    \cfrac{\tau^2}{\mu}Q_p(\cfrac{\mu^2T}{\tau^2}),&\text{if  }\mu > 0\\
-    1.2552 \tau \sqrt{T},& \text{if  }\mu=0 \\
-    \cfrac{\tau^2}{\mu}Q_n(\cfrac{\mu^2T}{\tau^2}),&\text{if  }\mu <0
-\end{cases}
-\]
-where
-\[
-\begin{aligned}
-Q_p(x) = &2\int_0^\infty\Biggl[
-    e^{-u}\sum_{n=1}^{\infty}
-    \cfrac{\sin^3(\theta_n)}{\theta_n-\cos(\theta_n)\sin(\theta_n)}
-    (1-e^{-\frac{x}{2cos^2(\theta_n)}})\\
-    &+e^{-\frac{u}{\tanh(u)}}\sinh(u)
-    (1-e^{-\frac{x}{2\cosh^2(\theta_n)}})
-    \Biggr]\,du
-\end{aligned}
-\]
-\[
-Q_n(x)-2\int_0^\infty e^u \sum_{n=1}^{\infty}
-\cfrac{\sin^3(\theta_n)}{\theta_n-\cos(\theta_n)\sin(\theta_n)}
-(1-e^{-\frac{x}{2cos^2(\theta_n)}})
-\,du
-\]
-\[
-\theta_n \text{ is the solution of }
- \tanh(\theta_n) =\cfrac{\theta_n}{u},
- \theta_n \in \bigl( (n-\cfrac{\pi}{2}),(n+\cfrac{\pi}{2})\bigr)
-\]
-\end{block}
-    
-\end{frame}
 \begin{frame}{Alternatives to Maximum Drawdown and  Sterling Ratio}
+Maximum Drawdown is cumbersome to minimize.
 Moody used DD to replace , the square root of the average of the
 square of the negative returns, defined as
 \[
@@ -147,5 +107,13 @@ Unlike utility functions that use variance as the risk-adjusted factor, this for
 
 \subsection{Comparison}
 \begin{frame}{Comparison}
-    
+    \centering
+    \begin{tabular}{|| c|c|c|| }
+    \hline \hline
+    Portfolio Management System & Adjustable risk preferences & Alternative input sources \\     \hline \hline
+    MPT & \color{blue}{Yes} & No \\  \hline
+    RL with Sharpe/Sterling ratio& No & \color{blue}{Yes}  \\  \hline
+    Proposed System & \color{blue}{Yes} & \color{blue}{Yes} \\   \hline \hline
+    \end{tabular}
+
 \end{frame}

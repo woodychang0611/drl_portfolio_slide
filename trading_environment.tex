@@ -33,39 +33,6 @@ The feature extractor extracts states from the features.
 \end{center}
 \end{frame}
 
-\begin{frame}{Portfolio Builder}
-The portfolio builder builds the portfolio from the investible universe and the action from the RL model.
-\\
-\begin{block}{Portfolio}
-The portfolio F is an m dimension vector space of weights f.
-\[
-    F = \{ {f \in \mathbb{R} } \} ^m,
-    \sum_{i=1}^m {f_i} =1
-\]
-\end{block}
-\begin{block}{Weight}
-Weight is a real number between 0 and 1. \alert{(No short position)}
-\[
-    f \in \mathbb{R} | 0 \leq f \leq 1 
-\]
-\end{block}
-\end{frame}
-
-
-\begin{frame}{Trading System}
-The Trading System measures performances of the given portfolios
-\begin{block}{Performances}
-\begin{itemize}
-    \item MDD
-    \item CAGR
-    \item Profit
-    \item Wealth
-\end{itemize}
-\end{block}
-These performances will be the input to calculate the reward or evaluate the performance of the system. 
-\end{frame}
-
-
 \begin{frame}{Reward Provider}
 The Reward Provider provides the reward to the RL model based on the performance of the portfolio.
 \begin{block}{Option 1: Penalty upon negative profits}
@@ -100,8 +67,6 @@ R_t =
 \alert{This increases the stability significantly.}
 \end{frame}
 
-
-
 \begin{frame}{Reward Provider}
 \begin{columns}
 \begin{column}{0.35\textwidth}
@@ -116,32 +81,3 @@ The results show penalty upon all profits exceed threshold has much better stabi
 \end{columns}
 \end{frame}
 
-
-\begin{frame}{Validation Result}
-
-\begin{columns}[t]
-\begin{column}{0.5\textwidth}
-\begin{block}{Validation Period}
-Period 1 (2017-03~2019-02) 
-\\
-Period 2 (2019/03~2021/02)
-\end{block}
-\begin{block}{Comparison}
-Compare CAGR and MDD of the portfolio from our system with result of Constant Rebalanced Portfolio (CRP)
-\end{block}
-\end{column}
-
-\begin{column}{0.5\textwidth}
-\begin{block}{Result}
-Our system successfully build portfolios with different MDD upon the same validation period using various thresholds and outperformed CRP Portfolios in most cases.
-\end{block}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Validation Result}
-\begin{center}
-\includegraphics[height= 7.5cm]{images/crp_compare.png}
-\end{center}
-
-\end{frame}

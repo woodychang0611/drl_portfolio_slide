@@ -1,17 +1,17 @@
 \section{System Design}
 \begin{frame}{Overview}
-The model contain two main parts
-\begin{itemize}
-    \item Training Environment
-    \item RL Model. 
-\end{itemize}
+   \tableofcontents[sectionstyle=show/hide, hideothersubsections]
 \begin{center}
   \includegraphics[width=10cm]{images/context_diagram.png}  
 \end{center}
 \end{frame}
 
 
-
+\subsection{Market Features}
+\begin{frame}{Market Features}
+\centering
+\includegraphics[width=10cm]{images/market.png}
+\end{frame}
 
 \begin{frame}{Market Features}
 \begin{block}{Structured information}
@@ -52,6 +52,14 @@ US Dollar Index (USDX) &  Currencies & No \\ \hline
 \newcommand\mynum[1]{{\renewcommand{\insertenumlabel}{#1}%
       \usebeamertemplate{enumerate item}}}
 
+
+
+\subsection{Investment Universe}
+\begin{frame}{Investment Universe}
+\centering
+\includegraphics[width=10cm]{images/investment_universe.png}
+\end{frame}
+
 \begin{frame}{Investment Universe}
 \begin{block}{Goal}
 Choose 10 investments with low covariances between each other; hence their combinations can yield better profits from the same risk level
@@ -83,7 +91,16 @@ Choose 10 investments with low covariances between each other; hence their combi
     \end{tabular}
 \end{frame}
 
+\begin{frame}{Risk and Return of selected ETFs}
+\centering
+\includegraphics[width=10cm]{images/etfs.png}
+\end{frame}
 
+\subsection{Investor Preference}
+\begin{frame}{Investor Preference}
+\centering
+\includegraphics[width=10cm]{images/investor_preference.png}
+\end{frame}
 
 \begin{frame}{Investor Preference}
 For investor preference, we focus on risk.
@@ -101,6 +118,19 @@ We use MDD as the risk indicator to evaluate our system. However, optimizing any
 
 
 
-
-
-
+\subsection{Portfolio}
+\begin{frame}{Portfolio}
+\begin{block}{Portfolio}
+The portfolio F is an m dimension vector space of weights f.
+\[
+    F = \{ {f \in \mathbb{R} } \} ^m,
+    \sum_{i=1}^m {f_i} =1
+\]
+\end{block}
+\begin{block}{Weight}
+Weight is a real number between 0 and 1. \alert{(No short position)}
+\[
+    f \in \mathbb{R} | 0 \leq f \leq 1 
+\]
+\end{block}
+\end{frame}
