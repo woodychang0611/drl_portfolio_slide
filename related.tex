@@ -78,23 +78,24 @@ DDR_T = \frac{Average(R_T)}{DD_T}
 
 \subsection{Comparison}
 \begin{frame}{Comparison}
-    \begin{columns}
-    \begin{column}{0.5\textwidth}
-    \begin{block}{DQN}
-    
+    \begin{block}{MPT}
+        \begin{itemize}
+            \item \color{blue}{Adjustable risk preferences}
+            \item\alert{Do not support alternative input sources}
+        \end{itemize}
     \end{block}
-    \begin{block}{TRPO/PPO}
-    
+    \begin{block}{RL-based with Sharpe/Sterling Ratio}
+        \begin{itemize}    
+            \item \alert{No adjustable risk preferences}
+            \item \color{blue}{Support alternative input sources}    
+        \end{itemize}            
     \end{block}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-        \begin{block}{DDPG/TD3}
-    
+
+    \begin{block}{Proposed System}
+        \begin{itemize}
+        \item \color{blue}{Adjustable risk preferences}
+        \item \color{blue}{Support alternative input sources}  
+        \end{itemize}        
     \end{block}
-    \begin{block}{SAC}
-    
-    \end{block}
-    \end{column}
-    \end{columns}
 
 \end{frame}
