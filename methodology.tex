@@ -1,8 +1,17 @@
 \section{Methodology}
+\begin{frame}{Methodology}
+       \tableofcontents[sectionstyle=show/hide, hideothersubsections]
+\end{frame}
 
-
-\subsection{Dataset}
-\begin{frame}{Dataset}
+\subsection{Data Collection and Processing}
+\begin{frame}{Data Collection and Processing}
+\begin{block}{Data Source}
+\begin{itemize}
+    \item Yahoo Finance
+    \item Federal Reserve Economic Data
+\end{itemize}
+\end{block}
+\begin{block}{Training and Validation}
     \begin{tabular}{||c|c|c|c||}
         \hline \hline
         Data Type & Start Time & End Time & Period (Year) \\ \hline \hline
@@ -10,10 +19,22 @@
         Validation Data & 2017/3/1 & 2021/3/15 & 4.04 \\ 
         \hline \hline
         \end{tabular}
+\end{block}
+\begin{block}{Data Processing}
+\begin{itemize}
+    \item Fill missing data with nearest historical data
+    \item Calculate statistics measures for non-stationary feature
+    \item Stored in files for further usage
+\end{itemize}
+\end{block}
 \end{frame}
 
 \subsection{Hyperparameter}
 \begin{frame}{Hyperparameter}
+\begin{itemize}
+    \item Only adjust Reward Scale
+    \item Keep default value for the rest
+\end{itemize}
 \centering
  \begin{tabular}{| c|c | }
    \hline \hline
@@ -29,9 +50,40 @@
    Reward scale & \color{blue}{1000} \\ \hline \hline
     \end{tabular}
 \end{frame}
+\subsection{Experiment}
+\begin{frame}{Experiment}
+\begin{block}{System Parameter}
+    \centering
+    \begin{tabular}{||c|c||}
+    \hline \hline
+    Threshold $\theta$ & Risk Preference \\ \hline
+    No plenty ($\infty$) & High \\ \hline
+    0.006 & Medium      \\ \hline
+    0.002 & Low      \\ \hline \hline
+    \end{tabular}
+\end{block}
+\begin{columns}[t]
+    \begin{column}{0.45\textwidth}
+    
+    \begin{block}{Trading Frequency}
+    \begin{itemize}
+        \item  Weekly
+    \end{itemize}
+    \end{block}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+    \begin{block}{Baseline}
+    \begin{itemize}
+        \item  Constant rebalanced portfolio (CRP)
+    \end{itemize}
+    \end{block}
+    \end{column}
+\end{columns}
 
-\subsection{Validation Period}
-\centering
+
+
+\end{frame}
+
 \begin{frame}{Validation Period}
 \begin{tabular}{||c|c|c|c|c||}
     \hline \hline
@@ -54,6 +106,16 @@ s
 \begin{frame}{Result}
 
 \begin{columns}[t]
+
+\begin{column}{0.5\textwidth}
+\begin{block}{Result}
+\begin{itemize}
+    \item Different threshold produces portfolios with different MDD
+    \item Outperformed CRP Portfolios in CAGR and MDD for most cases, 
+\end{itemize}
+\end{block}
+\end{column}
+
 \begin{column}{0.5\textwidth}
 
 \begin{block}{Baseline}
@@ -69,11 +131,7 @@ Constant Rebalanced Portfolio (CRP)
 \end{block}
 \end{column}
 
-\begin{column}{0.5\textwidth}
-\begin{block}{Result}
-Our system successfully build portfolios with different MDD upon the same validation period using various thresholds and outperformed CRP Portfolios in most cases.
-\end{block}
-\end{column}
+
 \end{columns}
 \end{frame}
 
