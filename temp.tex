@@ -66,3 +66,25 @@ D_t =
 Unlike utility functions that use variance as the risk-adjusted factor, this formula indicates no penalty for large positive returns. 
 
 \end{frame}
+
+
+
+\begin{frame}{Soft Actor-Critic}
+We Use Soft Actor-Critic (SAC), as the DRL model.
+\begin{block}{Actor-Critic}
+     \begin{columns}
+        \begin{column}{0.45\textwidth}
+        \begin{enumerate}
+            \item Observes the states from the environment.
+            \item Performs the action on the environment.
+            \item Calculate TD error based on the reward.
+            \item Adjust the parameters of Value function and the policy with the TD error.
+        \end{enumerate}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+        \centering
+        \includegraphics[width=5cm]{images/actor_critic.png}
+     \end{column}
+     \end{columns}
+ \end{block}
+\end{frame}

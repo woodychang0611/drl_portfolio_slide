@@ -8,16 +8,17 @@
 \end{frame}
 
 \subsection{Modern Portfolio Theory}
+
 \begin{frame}
 \frametitle{Modern Portfolio Theory (MPT)}
 \begin{columns}
 \begin{column}{0.55\textwidth}
-\begin{itemize}
-    \item Use investment historical data to determine efficient frontier
-    \item Can produce portfolio from given risk (variance)
-    \item \alert{Does not incorporate alternative data}
-
-\end{itemize}
+\begin{block}{Problem}
+    How to construct portfolios with risk preference?
+\end{block}
+\begin{block}{Solution}
+    Choose the portfolio with highest expected return from given risk (variance) by efficient frontier.
+\end{block}
 \end{column}
 \begin{column}{0.45\textwidth}
 \begin{center}
@@ -27,20 +28,19 @@
 \end{columns}
 \end{frame}
 
-
 \subsection{Reinforcement Learning with Sharpe Ratio}
 \begin{frame}{Reinforcement Learning with Sharpe Ratio}
-John Moody's trading system used reinforcement learning to construct the optimal portfolio and used Sharpe Ratio as objective function.
+\begin{block}{Problem}
+Loss of information for two staged system, forecasting/trading
+\end{block}
+
+\begin{block}{Solution}
+Train trading systems and portfolios by optimizing objective
+functions, e.g. Sharpe Ratio, directly with Reinforcement Learning.
+\end{block}
 
 \begin{block}{Sharpe Ratio}
-\[ SR = \frac{E(R_a - R_b)}{\sigma_a}\]
-\(R_a\): the return of the assert
-\\
-\(R_b\): the risk-free return
-\\
-\(E(R_a - R_b)\): the expected excess return of the assert
-\\
-\(\sigma_a\): standard deviation of the excess return.
+\[ SharpeRatio = \frac{E(R_a - R_f)}{\sigma_a}\]
 \end{block}
 \end{frame}
 
@@ -80,26 +80,25 @@ DDR_T = \frac{Average(R_T)}{DD_T}
 
 
 
-
 \subsection{Comparison}
 \begin{frame}{Comparison}
     \begin{block}{MPT}
         \begin{itemize}
-            \item \color{blue}{Adjustable risk preferences}
-            \item\alert{Do not support alternative input sources}
+            \item \color{ForestGreen}{Adjustable risk preferences}
+            \item\alert{Two staged system, loss of information}
         \end{itemize}
     \end{block}
     \begin{block}{RL-based with Sharpe/Sterling Ratio}
         \begin{itemize}    
             \item \alert{No adjustable risk preferences}
-            \item \color{blue}{Support alternative input sources}    
+            \item \color{ForestGreen}{Optimization directly}    
         \end{itemize}            
     \end{block}
 
     \begin{block}{Proposed System}
         \begin{itemize}
-        \item \color{blue}{Adjustable risk preferences}
-        \item \color{blue}{Support alternative input sources}  
+        \item \color{ForestGreen}{Adjustable risk preferences}
+        \item \color{ForestGreen}{Optimization directly}  
         \end{itemize}        
     \end{block}
 
